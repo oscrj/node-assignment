@@ -13,16 +13,26 @@ function respond(request, response){
     let key = "theKey";
 
     if(params.query.key == key){
-        response.write('U R IN');
-        response.end();
+        response.write('<html><head><meta charset="utf-8">');
+
+        fs.readFile('./wishList.txt', {encoding: 'utf8'}, (err, txtFile) => {
+            if(err){
+                alert(err.message);
+            }else{
+                response.write(`<textarea id="txtFile" cols="25" rows="10">${txtFile}</textarea><br>
+                <button id="submitBtn">Submit</button>`);
+                response.end();
+            }
+        });
+
     }else{
-        fs.readFile('./wishlist.txt', {encoding: 'utf8'}, (err, txtFile) => {
+        fs.readFile('./wishList.txt', {encoding: 'utf8'}, (err, txtFile) => {
             if(err){
                 alert(err.message);
             }else{
                 response.write(txtFile);
+                response.end();
             }
-            response.end();
         });
     }
 }
