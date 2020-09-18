@@ -5,33 +5,29 @@ const port = 8080;
 
 // Create webserver on port 8080 and use a callback-function for request and response.
 http.createServer(respond).listen(port, () => {
-    console.log("Server running at port: " + port);    
+    console.log("Server running at port: " + port); 
 });
 
 function respond(request, response){
     let params = url.parse(request.url, true);
     let key = "theKey";
+    let urlPath = "/secret"
 
-    if(params.query.key == key){
-        response.write('<html><head><meta charset="utf-8">');
-
-        fs.readFile('./wishList.txt', {encoding: 'utf8'}, (err, txtFile) => {
+    if(params.pathname == urlPath && params.query.key == key){
+        fs.readFile('./secret.html', {encoding: 'utf8'}, (err, htmlFile) => {
             if(err){
                 alert(err.message);
             }else{
-                response.write(`<textarea id="txtFile" cols="25" rows="10">${txtFile}</textarea><br>
-                <button id="submitBtn">Submit</button>`);
-                response.end();
+                response.end(htmlFile);
             }
         });
-
-    }else{
+    }
+    else{
         fs.readFile('./wishList.txt', {encoding: 'utf8'}, (err, txtFile) => {
             if(err){
                 alert(err.message);
             }else{
-                response.write(txtFile);
-                response.end();
+                response.end(txtFile);
             }
         });
     }
