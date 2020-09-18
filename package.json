@@ -1,0 +1,23 @@
+{
+  "name": "Node",
+  "version": "1.0.0",
+  "description": "Skapa en webbserver som ger respons för en publik (http://localhost:3000) respektive en privat URL(http://localhost:3000/secret?key=ALBATROSS).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscrj/Node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscrj/Node/issues"
+  },
+  "homepage": "https://github.com/oscrj/Node#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
